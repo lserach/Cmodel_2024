@@ -10,29 +10,24 @@ Aabs = 10e-12;
 An = 6.0221409e23; % Avogadros number
 Rpdb = 0.0112372; % In per mil, PDB standard ratio of 13C/12C
 %% Parameters
-
-load model_params
-
-param = model_params;
-
-kr_surf = param(1);     % Rapid pool consumption rate (1/yr)
-ksl_surf = param(2);    % Slow pool consumption rate (1/yr)
-kst_surf = param(3);    % Stable pool consumption rate (1/yr)
-er_surf = param(4);     % Rapid pool carbon use efficiency (CUE)
-esl_surf = param(5);    % Slow pool CUE
-est_surf = param(6);    % Stable pool CUE
-tr_surf = param(7);     % Transformation constant of rapid C to slow C
-tsl_surf = param(8);    % Transformation constant of slow C to stable C
-Z = param(9);           % Root depth scaling constant (m)
-tau = param(10);        % Rate of decrease of a0 with depth (1/m)
-rootC_total = param(11); % Depth-integrated root C production (mol/m^2yr)
-litterC_total = param(12); % Litter C input (mol/m^2yr)
-bts = param(13);        % Depth scaling term for bioturbation (mol/m^2yr)
-a0_r = param(14);       % Zero-depth advection constant - rapid (m/yr)
-a0_sl = param(15);      % Zero-depth advection constant - slow (m/yr)
-a0_st = param(16);      % Zero-depth advection constant - stable (m/yr)
-Db = param(17);         % Bulk diffusion constant in m2/year 
-Dg = param(18).*ones(Nz,1); %Soil CO2 diffusion constant (m^2/yr) 
+kr_surf = 0.8;     % Rapid pool consumption rate (1/yr)
+ksl_surf = 0.1;    % Slow pool consumption rate (1/yr)
+kst_surf = 0.003;    % Stable pool consumption rate (1/yr)
+er_surf = 0.23;     % Rapid pool carbon use efficiency (CUE)
+esl_surf = 0.19;    % Slow pool CUE
+est_surf = 0.13;    % Stable pool CUE
+tr_surf = 0.15;     % Transformation constant of rapid C to slow C
+tsl_surf = 0.01;    % Transformation constant of slow C to stable C
+Z = 0.72;           % Root depth scaling constant (m)
+tau = 0.25;        % Rate of decrease of a0 with depth (1/m)
+rootC_total = 5; % Depth-integrated root C production (mol/m^2yr)
+litterC_total = 10; % Litter C input (mol/m^2yr)
+bts = 0.22;        % Depth scaling term for bioturbation (mol/m^2yr)
+a0_r = 0.01;       % Zero-depth advection constant - rapid (m/yr)
+a0_sl = 0.00041;      % Zero-depth advection constant - slow (m/yr)
+a0_st = 0.027;      % Zero-depth advection constant - stable (m/yr)
+Db = 0.0000046;         % Bulk diffusion constant in m2/year 
+Dg = 22.2.*ones(Nz,1); %Soil CO2 diffusion constant (m^2/yr) 
 
 %% Bulk C diffusion (bioturbation)
 Df = Db.*exp(-z.*bts); % Scale bioturbation with depth
